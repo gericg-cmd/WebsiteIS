@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f1f1f, #2c3e50);
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      width: 100px;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-left: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(45deg, #4CAF50, #00c6ff);
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00ffcc;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 26px;
+      color: #00ffcc;
+      opacity: 0;
+    }
+
+    .pop {
+      animation: pop 0.5s ease forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    .play-again {
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="ai.html">Number Guessing Game</a>
+  </div>
+
+  <h1>Guess the Number (1–100), Lies 30% of The Time</h1>
+  <p>Try to guess the number!</p>
+
+  <input type="number" id="guessInput" min="1" max="100">
+  <button onclick="checkGuess()">Guess</button>
+
+  <div class="message" id="message"></div>
+  <div class="message">Guesses: <span id="guessCount">0</span></div>
+  <div class="result" id="result"></div>
+
+  <div class="play-again" id="playAgain">
+    <p>Play again?</p>
+    <button onclick="resetGame()">Yes</button>
+  </div>
+
+  <script>
+    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let guesses = 0;
+
+    function checkGuess() {
+      const input = document.getElementById("guessInput");
+      const message = document.getElementById("message");
+      const guessCountText = document.getElementById("guessCount");
+      const result = document.getElementById("result");
+      const playAgain = document.getElementById("playAgain");
+
+      const userGuess = Number(input.value);
+
+      if (!userGuess || userGuess < 1 || userGuess > 100) {
+        message.textContent = "Please enter a number between 1 and 100.";
+        return;
+      }
+
+      guesses++;
+      guessCountText.textContent = guesses;
+
+      // ✅ Correct guess always works
+      if (userGuess === secretNumber) {
+        let feedback = "";
+
+        if (guesses < 5) {
+          feedback = "🔥 Amazing!";
+        } else if (guesses < 10) {
+          feedback = "😎 Nice!";
+        } else {
+          feedback = "🎉 You got it!";
+        }
+
+        message.textContent = "Correct! The number was " + secretNumber;
+        result.textContent = feedback;
+
+        result.classList.remove("pop");
+        void result.offsetWidth;
+        result.classList.add("pop");
+
+        playAgain.style.display = "block";
+      } else {
+        // 🎲 30% chance to lie
+        const shouldLie = Math.random() < 0.3;
+
+        let isTooLow = userGuess < secretNumber;
+
+        // Flip the truth if lying
+        if (shouldLie) {
+          isTooLow = !isTooLow;
+        }
+
+        if (isTooLow) {
+          message.textContent = "Too low! Try again." + (shouldLie ? " 🤨" : "");
+        } else {
+          message.textContent = "Too high! Try again." + (shouldLie ? " 🤨" : "");
+        }
+      }
+
+      input.value = "";
+      input.focus();
+    }
+
+    function resetGame() {
+      secretNumber = Math.floor(Math.random() * 100) + 1;
+      guesses = 0;
+
+      document.getElementById("guessCount").textContent = "0";
+      document.getElementById("message").textContent = "New game started!";
+      document.getElementById("result").textContent = "";
+      document.getElementById("playAgain").style.display = "none";
+
+      document.getElementById("guessInput").focus();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* General body styles */
+body {
+    background-color: #1a1a2e;
+    font-family: 'Georgia', serif;
+    color: #eaeaea;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+#navbar {
+    background-color: #16213e;
+    padding: 15px 30px;
+    text-align: center;
+}
+
+#navbar a {
+    color: #e2b96f;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Header */
+#header {
+    background-color: #16213e;
+    color: #e2b96f;
+    text-align: center;
+    padding: 60px 20px;
+    border-bottom: 3px solid #e2b96f;
+}
+
+/* About section */
+#about-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+/* LeBron image */
+#lebron-img {
+    float: right;
+    margin: 0 0 20px 30px;
+    width: 280px;
+    border-radius: 10px;
+    border: 3px solid #e2b96f;
+}
+/* Anchor menu */
+#anchor-menu {
+    background-color: #0f3460;
+    text-align: center;
+    padding: 12px;
+}
+
+#anchor-menu a {
+    color: #e2b96f;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/* Career section */
+#career-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+#career-section h2 {
+    color: #e2b96f;
+    border-bottom: 2px solid #e2b96f;
+    padding-bottom: 10px;
+}
+
+/* Stats section */
+#stats-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+#stats-section h2 {
+    color: #e2b96f;
+    border-bottom: 2px solid #e2b96f;
+    padding-bottom: 10px;
+}
+
+/* Video section */
+#video-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #16213e;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#video-section h2 {
+    color: #e2b96f;
+    border-bottom: 2px solid #e2b96f;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+/* Tableau section */
+#tableau-section {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+#tableau-section h2 {
+    color: #e2b96f;
+    border-bottom: 2px solid #e2b96f;
+    padding-bottom: 10px;
+}
+
+/* Footer */
+#footer {
+    background-color: #16213e;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    color: #aaaaaa;
+    border-top: 3px solid #e2b96f;
+}
+
+#footer a {
+    color: #e2b96f;
+    text-decoration: none;
+}
